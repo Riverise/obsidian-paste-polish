@@ -1,0 +1,10 @@
+{
+  "id": "paste-polish",
+  "name": "PastePolish",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Polish your AI-generated notes by properly removing redundant blank lines while protecting critical Markdown rendering.",
+  "author": "Riverise",
+  "authorUrl": "https://github.com/Riverise/obsidian-paste-polish",
+  "isDesktopOnly": false
+}
