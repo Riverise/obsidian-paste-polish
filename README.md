@@ -35,3 +35,6 @@ AI-generated rich text often introduces excessive empty lines during Markdown co
 
 ## 📄 License
 MIT
+
+![PastePolish Before and After Comparison](images/before&after.png)
+*Figure: Comparison showing text before and after applying PastePolish. The raw text are copied and pasted from Gemini on web with redundant blank lines due to HTML2Markdown conversion.*
