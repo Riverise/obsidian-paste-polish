@@ -1,40 +1,131 @@
-# PastePolish for Obsidian
+# PastePolish
 
-**PastePolish** is a precision tool designed to fix the "spatial bloating" that occurs when pasting content from AI assistants like Gemini, ChatGPT, and Claude. It intelligently compresses redundant blank lines while strictly protecting Markdown's structural integrity.
+**PastePolish** is an Obsidian plugin that fixes the *“spatial bloating”* commonly introduced when pasting content from AI assistants such as ChatGPT, Gemini, or Claude.
 
-## 🛠️ The Problem
-AI-generated rich text often introduces excessive empty lines during Markdown conversion. 
-- **Standard tools** are too aggressive: deleting the line above a table or code block breaks its rendering.
-- **Manual editing** is tedious: cleaning up a long AI response takes more time than reading it.
+When rich text is converted into Markdown, it often produces excessive blank lines. PastePolish intelligently compresses these gaps while **preserving Markdown structure**, allowing you to clean pasted content safely in **Edit Mode**.
 
-## ✨ Key Features
-- **Smart Protection**: Automatically detects and preserves essential "buffer lines" above block elements (Tables, Code Blocks, Callouts, Lists, Math, and Dividers).
-- **Gradual Refinement ($x \rightarrow x-1$)**: A unique mode that reduces blank lines one by one, giving you physical control over your document's "breathing room."
-- **One-Click Polish**: Aggressively collapse all messy gaps into a clean, single-line spacing.
+---
 
-## 🔍 Technical Implementation
-- **Context-Aware Regex Engine**: Instead of simple global replacement, the plugin utilizes a lookahead regex replacer that scans the "upcoming" content before deciding to delete a line.
+## ✨ Features
 
-- **Block-Element Heuristics**: It identifies Markdown block-level syntax (e.g., /^[ \t]*([-=]{3,}|\||[\~]{3,}|>|[-*+][ \t]+|\d+.[ \t]+|$$|#{1,6}[ \t]+)/`) to enforce safety boundaries.
+### Smart Markdown Protection
 
-- **State-Based Reduction**: Implements a dynamic newline counter that respects the system's line-ending format (\n vs \r\n) while calculating the mathematical reduction of gaps.
+PastePolish detects Markdown block elements and preserves the required **buffer lines** above them.
 
-## ⌨️ Shortcut
-- **Default**: `Ctrl + Shift + X` (Windows/Linux) or `Cmd + Shift + X` (macOS).
-- *Fully customizable in Obsidian Hotkeys settings.*
+Protected structures include:
 
-## ⚙️ Configuration
-- **Compression Mode**:
-    - **Gradual (Default)**: Reduces consecutive blank lines by one per execution. Perfect for manual fine-tuning.
-    - **Aggressive**: Instantly collapses all consecutive blank lines into exactly one.
+* Tables
+* Devidier
+* Code blocks
+* Callouts
+
+This prevents formatting breakage caused by overly aggressive whitespace removal.
+
+---
+
+### Gradual Refinement (`x → x − 1`)
+
+A unique mode that reduces consecutive blank lines **one step at a time**.
+
+This allows you to gradually adjust the spacing of a document instead of applying a single irreversible cleanup.
+
+---
+
+### Aggressive Cleanup
+
+Instantly collapse all redundant blank lines into **exactly one line**, restoring clean Markdown formatting with a single command.
+
+---
+
+## Preview
+
+![PastePolish Before and After Comparison](images/before\&after.png)
+
+*Example showing text pasted from Gemini Web. HTML-to-Markdown conversion introduced excessive blank lines, which PastePolish cleans up while preserving structural spacing.*
+
+---
 
 ## 🚀 Installation
-1. Create a folder: `.obsidian/plugins/paste-polish`
-2. Drop in `main.js`, `manifest.json`, and `data.json`.
-3. Enable **PastePolish** in Community Plugins.
+
+### Community Plugins *(after official review)*
+
+1. Open **Settings → Community plugins**
+2. Search for **PastePolish**
+3. Install and enable
+
+---
+
+### Manual Installation
+
+1. Download the repository:
+
+[https://github.com/Riverise/obsidian-paste-polish](https://github.com/Riverise/obsidian-paste-polish)
+
+2. Place it inside your vault:
+
+```
+.obsidian/plugins/obsidian-paste-polish
+```
+
+3. Reload Obsidian and enable the plugin in **Community Plugins**.
+
+---
+
+## 🧭 Usage
+
+1. Paste content into a note
+2. Select the text you want to clean
+3. Run the command:
+
+```
+PastePolish: Polish pasted spacing
+```
+
+You can trigger this via the **Command Palette** or assign a **custom hotkey**.
+
+---
+
+## ⚙️ Settings
+
+### Compression Mode
+
+**Gradual (Default)**
+Reduces consecutive blank lines by **one per execution**.
+
+**Aggressive**
+Collapses all consecutive blank lines into **exactly one**.
+
+---
+
+## 🔍 Implementation Overview
+
+PastePolish uses a **context-aware regex engine** rather than simple global replacement.
+
+### Block Detection
+
+The plugin identifies Markdown block syntax using patterns such as:
+
+```
+/^[ \t]*([-=]{3,}|\||[\~]{3,}|>|[-*+][ \t]+|\d+\.[ \t]+|\$\$|#{1,6}[ \t]+)/
+```
+
+These heuristics allow the plugin to maintain safe spacing around structural elements.
+
+### State-Based Gap Reduction
+
+A newline counter tracks consecutive blank lines and safely reduces them while respecting platform-specific line endings (`\n` or `\r\n`).
+
+---
+
+## ⌨️ Hotkeys
+
+Hotkeys can be configured in **Settings → Hotkeys**.
+
+Search for **PastePolish** to bind your preferred shortcut.
+
+---
 
 ## 📄 License
-MIT
 
-![PastePolish Before and After Comparison](images/before&after.png)
-*Figure: Comparison showing text before and after applying PastePolish. The raw text are copied and pasted from Gemini on web with redundant blank lines due to HTML2Markdown conversion.*
+MIT License
+

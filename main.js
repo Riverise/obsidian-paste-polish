@@ -17,7 +17,7 @@ class RemoveEmptyLinesPlugin extends obsidian.Plugin {
 
         this.addCommand({
             id: 'remove-empty-lines',
-            name: 'Batch Remove Empty Lines',
+            name: 'Polish pasted spacing',
             editorCallback: (editor) => this.removeEmptyLines(editor),
         });
     }
