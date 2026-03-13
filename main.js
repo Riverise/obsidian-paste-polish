@@ -19,12 +19,11 @@ class RemoveEmptyLinesPlugin extends obsidian.Plugin {
             id: 'remove-empty-lines',
             name: 'Batch Remove Empty Lines',
             editorCallback: (editor) => this.removeEmptyLines(editor),
-            hotkeys: [{ modifiers: ["Mod", "Shift"], key: "x" }]
         });
     }
 
     onunload() {
-        console.log('Unloading Remove Empty Lines Plugin...');
+        /*console.log('Unloading Remove Empty Lines Plugin...');*/
     }
 
     async loadSettings() {
@@ -96,10 +95,10 @@ class RemoveEmptyLinesSettingTab extends obsidian.PluginSettingTab {
         const { containerEl } = this;
         containerEl.empty();
 
-        containerEl.createEl('h2', { text: 'Remove Empty Lines Settings' });
+        /*containerEl.createEl('h2', { text: 'Remove Empty Lines Settings' });*/
 
         new obsidian.Setting(containerEl)
-            .setName('Blank Line Reduction Mode')
+            .setName('Blank line reduction mode')
             .setDesc('Choose how to compress consecutive blank lines. To prevent formatting issues, at least one blank line is always preserved above Markdown block elements (e.g., tables, dividers).')
             .addDropdown(dropDown => {
                 dropDown
