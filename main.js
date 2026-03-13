@@ -10,7 +10,7 @@ const DEFAULT_SETTINGS = {
 class RemoveEmptyLinesPlugin extends obsidian.Plugin {
     
     async onload() {
-        console.log('Loading Remove Empty Lines Plugin...');
+        /*console.log('Loading Remove Empty Lines Plugin...');*/
 
         await this.loadSettings();
         this.addSettingTab(new RemoveEmptyLinesSettingTab(this.app, this));
