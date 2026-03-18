@@ -61,7 +61,7 @@ Instantly collapse all redundant blank lines into **exactly one line**, restorin
 
 [https://github.com/Riverise/obsidian-paste-polish](https://github.com/Riverise/obsidian-paste-polish)
 
-2. Place it inside your vault:
+2. Place both `main.js` and `manifest.json` inside your vault:
 
 ```
 .obsidian/plugins/obsidian-paste-polish
